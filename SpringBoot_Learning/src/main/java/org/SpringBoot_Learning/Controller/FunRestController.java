@@ -14,8 +14,8 @@ public class FunRestController {
     private String developerEmail;
 
     @GetMapping("/")
-    public String helloWorld() {
-        return developerName + " - " + developerEmail;
+    public String developerDetails() {
+        return "The Developer of this Project is : " + developerName + " and the EMAIL of them is : " + developerEmail;
     }
 
     @GetMapping("/workout")
