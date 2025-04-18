@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FunRestController {
 
-    @Value("${developer.name}")
+    @Value("${info.developer.name}")
     private String developerName;
 
-    @Value("${developer.email}")
+    @Value("${info.developer.email}")
     private String developerEmail;
 
     @GetMapping("/")

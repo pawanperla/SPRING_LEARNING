@@ -17,3 +17,13 @@ The starter parent gets you -->
 3.  Dependency Management
     1.  Use Java Version on parent only
     2.  for dependencies inherit the parent version
+
+## Actuator
+
+Spring Boot Actuator provides production-ready features to help you monitor and manage your application. It includes a set of built-in endpoints that allow you to gather metrics, view application health, and interact with your application.
+
+1. **Health Checks**: Monitor the health of your application.
+2. **Metrics**: Collect and view application metrics like memory usage, active threads, and more.
+3. **Environment Information**: Access details about the application's environment and configuration.
+4. **Thread Dump**: Analyze thread dumps for debugging.
+5. **Custom Endpoints**: Create your own endpoints for specific needs.
