@@ -63,3 +63,42 @@ Three Ways are there to RUN a MAVEN project
 2. make sure that you are in main project directory --->
    1. run : mvn spring-boot:run
 3. Just click the run icon in IDE or right click --> run as application on any java file of the project.
+
+## General SpringBoot Configuration Settings
+
+1. App Name and Version
+   1. spring.application.name=MySpringApp
+   2. info.app.version=1.0.0
+   3. info.app.description=My Spring Boot learning app
+2. SPRING SECURITY
+   1. spring.security.user.name=admin
+   2. spring.security.user.password=admin123
+   3. spring.security.user.roles=ADMIN
+3. CORS CONFIGURATION
+   1. app.cors.allowed-origins=http://localhost:3000
+   2. app.cors.allowed-methods=GET,POST,PUT,DELETE
+4. SERVER
+   1. server.port=8080
+   2. server.servlet.session.timeout=15m
+   3. server.servlet.context-path=/api/projects
+   4. server.error.include-message=always
+5. MAIL SETTINGS
+   1. spring.mail.host=smtp.gmail.com
+   2. spring.mail.port=587
+   3. spring.mail.username=your-email@gmail.com
+   4. spring.mail.password=your-password
+   5. spring.mail.properties.mail.smtp.auth=true
+   6. spring.mail.properties.mail.smtp.starttls.enable=true
+6. SPRING PROFILES
+   1. spring.profiles.active=dev
+7. LOGGING
+   1. logging.level.root=INFO
+   2. logging.level.com.SpringBoot_Learning=DEBUG
+   3. logging.level.org.springframework.web=DEBUG
+   4. logging.file.name=SpringBoot_Learning.log
+   5. logging.file.path={Actual Path}
+   6. logging.pattern.file=%d{yyyy-MM-dd} %p %c{1} - %m%n
+   7. logging.file.max-size=10MB
+   8. logging.file.max-history=30
+   9. logging.file.total-size-cap=1GB
+   10. logging.file.clean-history-on-start=true
