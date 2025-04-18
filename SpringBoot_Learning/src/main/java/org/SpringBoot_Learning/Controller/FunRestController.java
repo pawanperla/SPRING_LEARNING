@@ -17,4 +17,14 @@ public class FunRestController {
     public String helloWorld() {
         return developerName + " - " + developerEmail;
     }
+
+    @GetMapping("/workout")
+    public String getDailyWorkout() {
+        return "Today I ran 5 kilometers!";
+    }
+
+    @GetMapping("/fortune")
+    public String getDailyFortune() {
+        return "Today is your lucky day!";
+    }
 }
