@@ -185,3 +185,18 @@ If a component is annotated with @Primary it will be injected instead of any oth
 But, Adding @Qualifier("coach") has more priority eventhough @Primary is used
 
 Multiple Components with @Primary will throw an error
+
+## What is Lazy Initialization in Spring?
+
+Lazy Initialization means Spring will create the bean only when it’s needed for the first time, not at application startup.
+
+By default, Spring Boot eagerly creates all singleton beans at startup, which might:
+
+1. Slow down startup time
+2. Waste resources if some beans are never used
+
+Key Concepts & Points
+
+1. Default Behavior = Eager Initialization
+2. Enabling Lazy Initialization Globally --> spring.main.lazy-initialization=true
+3. Lazy Initialization at Class Level --> Use @Lazy annotation

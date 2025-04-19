@@ -9,18 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoRestController {
 
-    @Autowired
-    @Qualifier("hockeyCoach")
+    // @Autowired
+    // @Qualifier("hockeyCoach")
     private Coach coach;
 
     // Constructor-based dependency injection
 
-    /*
-     * @Autowired
-     * public DemoRestController(Coach coach) {
-     * this.coach = coach;
-     * }
-     */
+    @Autowired
+    public DemoRestController(@Qualifier("hockeyCoach") Coach coach) {
+        System.out.println("Inside DemoRestController constructor");
+        this.coach = coach;
+    }
 
     // Setter-based dependency injection
 
