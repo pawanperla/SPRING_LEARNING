@@ -1,13 +1,13 @@
 package org.SpringBoot_Learning.Classes;
 
 import org.SpringBoot_Learning.Interfaces.Coach;
-import org.springframework.context.annotation.Lazy;
+// import org.springframework.context.annotation.Lazy;
 // import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
 // @Primary
-@Lazy
+// @Lazy
 public class BasketBallCoach implements Coach {
 
     public BasketBallCoach() {

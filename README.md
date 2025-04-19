@@ -200,3 +200,30 @@ Key Concepts & Points
 1. Default Behavior = Eager Initialization
 2. Enabling Lazy Initialization Globally --> spring.main.lazy-initialization=true
 3. Lazy Initialization at Class Level --> Use @Lazy annotation
+
+## What is Bean Scope?
+
+Bean Scope defines how many instances of a bean Spring creates and how long those instances live. By default, Spring beans are singleton, but Spring provides multiple scopes for different use cases.
+
+### Common Bean Scopes in Spring
+
+1. Singleton
+   1. Only one instance per Spring container
+   2. Created during application startup (unless lazy-loaded)
+   3. @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON) use this annotation. It is deafult scope
+2. Prototype
+   1. A new instance is created every time the bean is requested.
+   2. Good for lightweight, stateful beans.
+   3. @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE) use this annotation
+3. Request
+   1. One bean per HTTP request
+   2. Useful for request-scoped data
+   3. @Scope(WebApplicationContext.SCOPE_REQUEST)
+4. Session
+   1. One bean per HTTP session
+   2. Perfect for user login/session-specific data
+   3. @Scope(WebApplicationContext.SCOPE_SESSION)
+5. Application
+   1. One bean for the entire ServletContext
+   2. Shared across all requests and sessions
+   3. @Scope(WebApplicationContext.APPLICATION)

@@ -12,13 +12,16 @@ public class DemoRestController {
     // @Autowired
     // @Qualifier("hockeyCoach")
     private Coach coach;
+    private Coach anotherCoach;
 
     // Constructor-based dependency injection
 
     @Autowired
-    public DemoRestController(@Qualifier("hockeyCoach") Coach coach) {
+    public DemoRestController(@Qualifier("hockeyCoach") Coach coach,
+            @Qualifier("hockeyCoach") Coach anotherCoach) {
         System.out.println("Inside DemoRestController constructor");
         this.coach = coach;
+        this.anotherCoach = anotherCoach;
     }
 
     // Setter-based dependency injection
@@ -69,5 +72,10 @@ public class DemoRestController {
     @GetMapping("/dailyWorkout")
     public String getDailyWorkout() {
         return coach.getDailyWorkout();
+    }
+
+    @GetMapping("/checkBean")
+    public String checkBean() {
+        return "Comparing beans: " + (coach == anotherCoach);
     }
 }
