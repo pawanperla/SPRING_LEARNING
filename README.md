@@ -183,3 +183,5 @@ here the bean name is battingCoach
 If a component is annotated with @Primary it will be injected instead of any other components which implements the interface.
 
 But, Adding @Qualifier("coach") has more priority eventhough @Primary is used
+
+Multiple Components with @Primary will throw an error
