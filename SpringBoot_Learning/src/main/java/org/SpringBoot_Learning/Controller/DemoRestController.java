@@ -1,8 +1,9 @@
 package org.SpringBoot_Learning.Controller;
 
-import org.SpringBoot_Learning.Classes.CricketCoach;
+// import org.SpringBoot_Learning.Classes.CricketCoach;
 import org.SpringBoot_Learning.Interfaces.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,23 +11,41 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoRestController {
 
     @Autowired
-    private CricketCoach coach;
+    @Qualifier("hockeyCoach")
+    private Coach coach;
 
     // // Constructor-based dependency injection
+
     // @Autowired
     // public DemoRestController(Coach coach) {
     // this.coach = coach;
     // }
 
     // // Setter-based dependency injection
+
     // @Autowired
     // public void setCoach(Coach coach) {
     // this.coach = coach;
     // }
 
     // Method based dependency injection
+
     // @Autowired
     // public void doSomeStuff(Coach coach) {
+    // this.coach = coach;
+    // }
+
+    // Having multiple beans of the same type
+
+    // @Autowired
+    // public DemoRestController(@Qualifier("hockeyCoach") Coach coach) {
+    // this.coach = coach;
+    // }
+
+    // Setter-based dependency injection with @Qualifier
+    
+    // @Autowired
+    // public void setCoach(@Qualifier("hockeyCoach") Coach coach) {
     // this.coach = coach;
     // }
 

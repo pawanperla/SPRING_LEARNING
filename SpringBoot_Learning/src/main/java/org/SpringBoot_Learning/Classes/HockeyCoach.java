@@ -3,7 +3,7 @@ package org.SpringBoot_Learning.Classes;
 import org.SpringBoot_Learning.Interfaces.Coach;
 import org.springframework.stereotype.Component;
 
-// @Component
+@Component
 public class HockeyCoach implements Coach {
 
     @Override
