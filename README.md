@@ -155,3 +155,11 @@ scanBasePackages = {Package1 , Package2}
 3. @Repository --> Data access layer
 4. @Controller --> Web controller (MVC)
 5. @RestController --> REST API controller (Spring Boot)
+
+## AutoWiring
+
+Steps :
+
+1. Spring will scan for @Component files
+2. Anyone Implementing an Interface?
+3. Let's Inject them
