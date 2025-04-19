@@ -163,3 +163,17 @@ Steps :
 1. Spring will scan for @Component files
 2. Anyone Implementing an Interface?
 3. Let's Inject them
+
+## @Qualifier("{beanName}")
+
+When you specify the @Qualifier("{beanName}")..that component is scanned and AutoWired and dependency is Injected
+
+By default, the bean name is:
+The camelCase version of the class name if you annotate it with @Component, @Service, @Repository, or @Controller without specifying a name.
+
+### Custom beanName
+
+@Component("battingCoach")
+public class CricketCoach implements Coach { }
+
+here the bean name is battingCoach
