@@ -102,3 +102,56 @@ Three Ways are there to RUN a MAVEN project
    8. logging.file.max-history=30
    9. logging.file.total-size-cap=1GB
    10. logging.file.clean-history-on-start=true
+
+## What is @SpringBootApplication
+
+@SpringBootApplication is a convenience annotation that combines three annotations in one:
+
+1. @Configuration
+
+   1. Marks the class as a source of bean definitions.
+   2. Equivalent to an XML-based Spring configuration file.
+
+2. @EnableAutoConfiguration
+
+   1. Tells Spring Boot to automatically configure beans based on the classpath and your application properties.
+   2. Example: If Spring sees spring-boot-starter-web, it configures Tomcat, DispatcherServlet, etc.
+
+3. @ComponentScan
+   1. Tells Spring to scan for components (like @Component, @Service, @Repository, and @Controller) in the current package and sub-packages.
+
+## What is ApplicationContext
+
+ApplicationContext is the central interface in Spring for providing configuration information to the application.
+
+1. Think of it like a container or a brain that:
+2. Creates and manages all your beans
+3. Handles dependency injection
+4. Manages the complete life cycle of beans
+5. Provides built-in support for features like i18n (internationalization), event propagation, etc.
+
+In Simpler Terms :
+
+1. ApplicationContext = Spring’s container
+2. It manages all your app’s beans & dependencies
+3. You can fetch, inspect, and control beans using it
+
+## What is Component Scanning?
+
+Component scanning is the process by which Spring automatically detects and registers beans (classes annotated with @Component, @Service, @Repository, @Controller, etc.) into the ApplicationContext — so you don’t have to manually declare them using @Bean.
+
+Component Scanning is done by Main Spring Applications @ComponentScan
+It only scans packages which are at the same parent level folder for all the service, controller, repository, component.
+
+If you want to Scan different packages..in main spring application should add :
+@SpringBootApplication(
+scanBasePackages = {Package1 , Package2}
+)
+
+### Annotation --> Purpose
+
+1. @Component --> Generic component
+2. @Service --> Business logic layer
+3. @Repository --> Data access layer
+4. @Controller --> Web controller (MVC)
+5. @RestController --> REST API controller (Spring Boot)
