@@ -10,10 +10,23 @@ public class DemoRestController {
 
     private Coach coach;
 
+    // // Constructor-based dependency injection
+    // @Autowired
+    // public DemoRestController(Coach coach) {
+    // this.coach = coach;
+    // }
+
+    // Setter-based dependency injection
     @Autowired
-    public DemoRestController(Coach coach) {
+    public void setCoach(Coach coach) {
         this.coach = coach;
     }
+
+    // Method based dependency injection
+    // @Autowired
+    // public void doSomeStuff(Coach coach) {
+    // this.coach = coach;
+    // }
 
     @GetMapping("/dailyWorkout")
     public String getDailyWorkout() {
