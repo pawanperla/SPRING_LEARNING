@@ -17,7 +17,7 @@ public class DemoRestController {
     // Constructor-based dependency injection
 
     @Autowired
-    public DemoRestController(@Qualifier("hockeyCoach") Coach coach,
+    public DemoRestController(@Qualifier("acquatic") Coach coach,
             @Qualifier("hockeyCoach") Coach anotherCoach) {
         System.out.println("Inside DemoRestController constructor");
         this.coach = coach;

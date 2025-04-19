@@ -269,3 +269,9 @@ Constructor → Dependency Injection → @PostConstruct
 → afterPropertiesSet() → init-method
 → Ready to Use
 → @PreDestroy → destroy() → destroy-method
+
+## Bean Configuration
+
+If any class is not a @Component you can still Autowire it by creating a config filw with @Configuration annotion.
+create a method with @Bean annotation in it and return the class object which has no @Component.
+Now Autowiring of the class works.
