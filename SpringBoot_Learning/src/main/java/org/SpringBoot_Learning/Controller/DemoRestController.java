@@ -58,6 +58,15 @@ public class DemoRestController {
      * }
      */
 
+    // Primary bean with @Primary
+
+    /*
+     * @Autowired
+     * public DemoRestController(Coach coach) {
+     * this.coach = coach;
+     * }
+     */
+
     @GetMapping("/dailyWorkout")
     public String getDailyWorkout() {
         return coach.getDailyWorkout();

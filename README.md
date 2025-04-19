@@ -177,3 +177,9 @@ The camelCase version of the class name if you annotate it with @Component, @Ser
 public class CricketCoach implements Coach { }
 
 here the bean name is battingCoach
+
+## @Primary
+
+If a component is annotated with @Primary it will be injected instead of any other components which implements the interface.
+
+But, Adding @Qualifier("coach") has more priority eventhough @Primary is used
