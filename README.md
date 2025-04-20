@@ -295,3 +295,5 @@ This allows Spring to manage and inject it wherever required.
 ---
 
 With **Spring Boot**, integrating JPA & Hibernate becomes super simple – just define your entities and repositories, and Spring Boot + Hibernate take care of the rest!
+
+Hibernate uses JDBC on the top to communicate with Databases.
