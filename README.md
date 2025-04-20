@@ -245,3 +245,53 @@ public class AppConfig {
 ```
 
 This allows Spring to manage and inject it wherever required.
+
+## JPA & Hibernate Overview
+
+### What is JPA (Java Persistence API)?
+
+**JPA** is a **specification** (set of rules/interfaces) for **Object-Relational Mapping (ORM)** in Java. It provides a standard way to map Java objects to relational database tables.
+
+#### Key Features of JPA:
+
+1. Defines how Java objects are mapped to DB tables
+2. Part of **Java EE / Jakarta EE**
+3. Provides **interfaces only** – no implementation
+4. Requires a **JPA provider** (like Hibernate) for actual DB operations
+
+---
+
+### What is Hibernate?
+
+**Hibernate** is the **most widely used JPA provider**. It’s an ORM framework that implements JPA and adds extra features.
+
+#### Key Features of Hibernate:
+
+1. Implements JPA interfaces + adds advanced features
+2. Handles all JDBC boilerplate code
+3. Supports caching, lazy loading, dirty checking
+4. Works with various databases: MySQL, PostgreSQL, H2, Oracle, etc.
+
+---
+
+### JPA/Hibernate Lifecycle
+
+1. Define entity class using `@Entity` annotation
+2. Spring Boot auto-configures the **EntityManager**
+3. Interact using **Repository interfaces** (e.g. `JpaRepository`)
+4. Hibernate handles SQL queries behind the scenes
+
+---
+
+### Additional Features Provided by Hibernate
+
+| Feature                        | Description                                   |
+| ------------------------------ | --------------------------------------------- |
+| HQL (Hibernate Query Language) | Object-oriented query language similar to SQL |
+| Second-Level Cache             | Speeds up performance using caching           |
+| Auditing Support               | Tracks created/updated timestamps, etc.       |
+| Custom Fetch Strategies        | Fine-tuned control over how data is retrieved |
+
+---
+
+With **Spring Boot**, integrating JPA & Hibernate becomes super simple – just define your entities and repositories, and Spring Boot + Hibernate take care of the rest!
