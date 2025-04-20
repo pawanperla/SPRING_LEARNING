@@ -4,11 +4,11 @@ This repository documents my journey of learning Spring and Spring Boot. It incl
 
 ---
 
-## 🚀 What is Maven?
+## What is Maven?
 
 **Apache Maven** is a powerful build automation and project management tool primarily used for Java projects.
 
-### 🔧 What Maven Does:
+### What Maven Does:
 
 1. **Builds Your Project** – `mvn compile`, `mvn package`
 2. **Manages Dependencies** – via `pom.xml`
@@ -16,7 +16,7 @@ This repository documents my journey of learning Spring and Spring Boot. It incl
 4. **Packages Application** – into `.jar` or `.war` files
 5. **Deployment** – if required, via `mvn deploy`
 
-### 🔥 Common Maven Commands
+### Common Maven Commands
 
 | Command               | Description                           |
 | --------------------- | ------------------------------------- |
@@ -26,13 +26,13 @@ This repository documents my journey of learning Spring and Spring Boot. It incl
 | `mvn package`         | Packages the app into a `.jar`/`.war` |
 | `mvn spring-boot:run` | Runs a Spring Boot app directly       |
 
-### 📂 About `mvnw` Files
+### About `mvnw` Files
 
 These wrapper files are used to ensure a consistent Maven version across all systems. You can delete them if Maven is already installed locally.
 
 ---
 
-## 🌱 Spring Boot Starter Parent
+## Spring Boot Starter Parent
 
 Using the Spring Boot Starter Parent helps in managing dependencies more efficiently.
 
@@ -42,7 +42,7 @@ Using the Spring Boot Starter Parent helps in managing dependencies more efficie
 
 ---
 
-## ⚙️ Actuator
+## Actuator
 
 Spring Boot Actuator offers production-ready features to help monitor and manage applications.
 
@@ -56,7 +56,7 @@ Spring Boot Actuator offers production-ready features to help monitor and manage
 
 ---
 
-## 🚀 Ways to Run a Maven Project
+## Ways to Run a Maven Project
 
 1. **Via Command Line (JAR Execution)**
 
@@ -74,7 +74,7 @@ Spring Boot Actuator offers production-ready features to help monitor and manage
 
 ---
 
-## ⚙️ General Spring Boot Configuration
+## General Spring Boot Configuration
 
 ### Application Info
 
@@ -142,7 +142,7 @@ logging.file.clean-history-on-start=true
 
 ---
 
-## 📌 Key Spring Boot Annotations
+## Key Spring Boot Annotations
 
 ### `@SpringBootApplication`
 
@@ -172,7 +172,7 @@ Scans the specified packages for Spring components.
 
 ---
 
-## 🤖 Dependency Injection & Bean Management
+## Dependency Injection & Bean Management
 
 ### AutoWiring
 
@@ -193,7 +193,7 @@ public class CricketCoach implements Coach {}
 
 ---
 
-## 💤 Lazy Initialization
+## Lazy Initialization
 
 - Default behavior: **Eager** (at startup)
 - To enable lazy loading:
@@ -202,7 +202,7 @@ public class CricketCoach implements Coach {}
 
 ---
 
-## 📦 Bean Scopes
+## Bean Scopes
 
 | Scope       | Description                        | Annotation                                        |
 | ----------- | ---------------------------------- | ------------------------------------------------- |
@@ -214,7 +214,7 @@ public class CricketCoach implements Coach {}
 
 ---
 
-## 🔁 Bean Lifecycle
+## Bean Lifecycle
 
 Lifecycle Phases:
 
@@ -230,7 +230,7 @@ Lifecycle Phases:
 
 ---
 
-## 🛠️ Bean Configuration
+## Bean Configuration
 
 If a class is not marked with `@Component`, you can still register it as a bean manually using a configuration class:
 
@@ -245,7 +245,3 @@ public class AppConfig {
 ```
 
 This allows Spring to manage and inject it wherever required.
-
----
-
-This README will continue to grow as I explore more topics in Spring and Spring Boot. 🌱
