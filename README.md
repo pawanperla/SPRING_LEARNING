@@ -302,6 +302,30 @@ Hibernate uses JDBC on the top to communicate with Databases.
 
 ---
 
-With **Spring Boot**, integrating JPA & Hibernate becomes super simple – just define your entities and repositories, and Spring Boot + Hibernate take care of the rest!
+## EntityManager vs JpaRepository
 
-Hibernate uses JDBC on the top to communicate with Databases.
+### JpaRepository
+
+- Provides commonly used **CRUD operations** out of the box.
+- Minimizes boilerplate and simplifies development.
+- Supports:
+  - **Pagination and Sorting**
+  - **Query generation** based on method names.
+- Custom queries can be written using the `@Query` annotation.
+
+**Use Case:**  
+Best suited for standard data access operations where you need quick and clean integration with Spring Data JPA.
+
+---
+
+### EntityManager
+
+- Offers **low-level control** over database interactions.
+- Enables:
+  - Writing **native SQL queries**
+  - Executing **stored procedures**
+  - Managing custom transactional behavior
+- Directly interacts with the **JPA persistence context** and entity lifecycle.
+
+**Use Case:**  
+Ideal for complex or performance-critical scenarios that are not easily handled by higher-level abstractions like `JpaRepository`.
