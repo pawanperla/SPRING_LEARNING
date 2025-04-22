@@ -27,7 +27,7 @@ public class SpringBootLearningApplication {
 	public CommandLineRunner commandLineRunner() {
 		return runner -> {
 			// createStudent();
-			// createMultipleStudents();
+			createMultipleStudents();
 			// readStudent();
 			// readAllStudents();
 			// findByLastName();

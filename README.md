@@ -407,7 +407,7 @@ List<Employee> employees = query.getResultList();
 - When you want to avoid runtime `ClassCastException`.
 - When using **named parameters** or **dynamic queries** in JPQL.
 
-### ⚖️ Comparison with Query
+### Comparison with Query
 
 | Feature            | `Query` | `TypedQuery<T>` |
 | ------------------ | ------- | --------------- |
@@ -416,3 +416,5 @@ List<Employee> employees = query.getResultList();
 | Compile-time Check | ❌ No   | ✅ Yes          |
 
 ---
+
+![JPA Hibernate Configuration Properties](./SpringBoot_Learning/src/main/resources/static/jpa-hibernate-configuration.png.png)
