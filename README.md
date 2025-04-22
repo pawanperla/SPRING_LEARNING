@@ -329,3 +329,90 @@ Best suited for standard data access operations where you need quick and clean i
 
 **Use Case:**  
 Ideal for complex or performance-critical scenarios that are not easily handled by higher-level abstractions like `JpaRepository`.
+
+## What is JPQL?
+
+JPQL is an object-oriented query language similar to SQL but operates on entities and their relationships, not directly on database tables.
+
+It's defined as part of JPA (Java Persistence API) and is used to perform queries on the entity objects.
+
+### Key Characteristics
+
+1. Entity-based: JPQL queries deal with Java objects (entities) instead of raw SQL tables and columns.
+
+2. Portable: It's database-independent, unlike native SQL.
+
+3. Type-safe (to an extent): While not compile-time type-safe, it gives logical consistency over SQL.
+
+4. Case-sensitive identifiers: Entity names and property names are case-sensitive.
+
+### JPQL Clauses
+
+| **Clause**                         | **Description**                 |
+| ---------------------------------- | ------------------------------- |
+| `SELECT`                           | Selects data                    |
+| `FROM`                             | Specifies the entity            |
+| `WHERE`                            | Filters rows                    |
+| `ORDER BY`                         | Sorts the result                |
+| `GROUP BY`                         | Groups the results              |
+| `HAVING`                           | Filters grouped data            |
+| `JOIN`                             | Performs joins between entities |
+| `IN`, `LIKE`, `BETWEEN`, `IS NULL` | Used in conditional expressions |
+
+### Limitations
+
+1. No support for INSERT operations.
+
+2. Limited support for complex DB-specific functions.
+
+3. Might not match the performance of raw SQL in some complex queries.
+
+## Typed Query in JPA
+
+A **TypedQuery** in JPA is a type-safe version of a `Query` that ensures the result type is known at compile time. It is part of the Java Persistence API and is generally used with JPQL (Java Persistence Query Language).
+
+### Key Points about TypedQuery
+
+- **Type Safety**: Ensures that the result type returned from the query matches the expected type.
+- **Compile-time Checking**: Helps catch errors during compilation instead of runtime.
+- **Avoids Type Casting**: Eliminates the need for casting when retrieving results.
+- **Better IDE Support**: Easier code navigation, auto-completion, and refactoring support.
+- **Used with EntityManager**: Created using the `EntityManager.createQuery()` method.
+
+### Syntax
+
+```java
+TypedQuery<EntityClass> query = entityManager.createQuery("SELECT e FROM EntityClass e WHERE e.property = :value", EntityClass.class);
+query.setParameter("value", someValue);
+List<EntityClass> resultList = query.getResultList();
+```
+
+### Example
+
+Suppose you have an `Employee` entity:
+
+To fetch employees with a salary above a threshold:
+
+```java
+TypedQuery<Employee> query = entityManager.createQuery(
+    "SELECT e FROM Employee e WHERE e.salary > :minSalary", Employee.class
+);
+query.setParameter("minSalary", 50000.0);
+List<Employee> employees = query.getResultList();
+```
+
+### When to Use TypedQuery
+
+- When you want **strongly-typed results**.
+- When you want to avoid runtime `ClassCastException`.
+- When using **named parameters** or **dynamic queries** in JPQL.
+
+### ⚖️ Comparison with Query
+
+| Feature            | `Query` | `TypedQuery<T>` |
+| ------------------ | ------- | --------------- |
+| Type Safety        | ❌ No   | ✅ Yes          |
+| Casting Needed     | ✅ Yes  | ❌ No           |
+| Compile-time Check | ❌ No   | ✅ Yes          |
+
+---
