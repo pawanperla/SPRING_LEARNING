@@ -34,6 +34,11 @@ public class Student {
         this.email = email;
     }
 
+    public Student(String firstName, String last_name) {
+        this.firstName = firstName;
+        this.last_name = last_name;
+    }
+
     public int getId() {
         return id;
     }

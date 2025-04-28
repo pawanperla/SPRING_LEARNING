@@ -411,10 +411,12 @@ List<Employee> employees = query.getResultList();
 
 | Feature            | `Query` | `TypedQuery<T>` |
 | ------------------ | ------- | --------------- |
-| Type Safety        | ❌ No   | ✅ Yes          |
-| Casting Needed     | ✅ Yes  | ❌ No           |
-| Compile-time Check | ❌ No   | ✅ Yes          |
+| Type Safety        | No      | Yes             |
+| Casting Needed     | Yes     | No              |
+| Compile-time Check | No      | Yes             |
 
 ---
 
-![JPA Hibernate Configuration Properties](./SpringBoot_Learning/src/main/resources/static/jpa-hibernate-configuration.png.png)
+![JPA Hibernate Configuration Properties](./SpringBoot_Learning/src/main/resources/static/jpa-hibernate-configuration.png)
+
+![Jackson](./SpringBoot_Learning/src/main/resources/static/Jackson.png)
