@@ -420,3 +420,157 @@ List<Employee> employees = query.getResultList();
 ![JPA Hibernate Configuration Properties](./SpringBoot_Learning/src/main/resources/static/jpa-hibernate-configuration.png)
 
 ![Jackson](./SpringBoot_Learning/src/main/resources/static/Jackson.png)
+
+
+# @PostConstruct in Spring - Complete Guide
+
+---
+
+## What is `@PostConstruct`?
+
+- `@PostConstruct` is an annotation used on a method.
+- It marks a method that should be executed **after the bean is fully initialized**, but **before** it is used.
+
+---
+
+## Where does `@PostConstruct` come from?
+
+- It comes from Java EE:
+  ```java
+  import jakarta.annotation.PostConstruct;
+  ```
+  or (older versions)
+  ```java
+  import javax.annotation.PostConstruct;
+  ```
+
+Spring internally supports and detects it.
+
+---
+
+## When is `@PostConstruct` called?
+
+- After Spring finishes **dependency injection** (`@Autowired`, etc.).
+- **Before** the bean is used externally.
+
+Thus, you can **safely access `@Autowired` fields** inside a `@PostConstruct` method.
+
+---
+
+## Typical Use Cases
+
+- Initializing variables
+- Preparing any setup after injections
+- Loading external configuration
+- Starting background tasks
+- Connecting to services (DB, messaging)
+- Validation after injection
+
+---
+
+## Example
+
+```java
+import org.springframework.stereotype.Component;
+import jakarta.annotation.PostConstruct;
+
+@Component
+public class MyService {
+
+    @PostConstruct
+    public void init() {
+        System.out.println("Bean is fully initialized. Running @PostConstruct method...");
+    }
+}
+```
+
+---
+
+## Important Rules
+
+| Rule | Details |
+|:---|:---|
+| Return type | void |
+| Arguments | No arguments allowed |
+| Exceptions | Can throw checked exceptions |
+| Number of methods | Typically one per bean |
+
+---
+
+## Spring Bean Lifecycle (with @PostConstruct)
+
+1. Spring creates the bean.
+2. Spring injects dependencies.
+3. Spring calls the `@PostConstruct` method.
+4. Bean is ready for external use.
+
+---
+
+## Alternatives to `@PostConstruct`
+
+- Implementing `InitializingBean`:
+
+```java
+@Component
+public class MyService implements InitializingBean {
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("afterPropertiesSet() called!");
+    }
+}
+```
+
+- Using `@Bean(initMethod = "methodName")`:
+
+```java
+@Bean(initMethod = "init")
+public MyService myService() {
+    return new MyService();
+}
+```
+
+- Using `@EventListener(ApplicationReadyEvent.class)` for full application startup control.
+
+---
+
+## When Not to Use `@PostConstruct`
+
+- If needing **full application context** (use `ApplicationReadyEvent`).
+- If requiring **asynchronous startup** behavior.
+
+---
+
+## Deprecation Discussion
+
+- In Spring 6 / Jakarta EE 9+, package changed to `jakarta.annotation.PostConstruct`.
+- Concept is still valid and used.
+- For better future-proofing, consider `ApplicationReadyEvent` for certain use cases.
+
+---
+
+## Example (with Autowired field)
+
+```java
+@Component
+public class ExampleService {
+
+    @Autowired
+    private MyRepository repo;
+
+    @PostConstruct
+    public void init() {
+        System.out.println("Repo injected? " + (repo != null));
+        // Load cache
+        // Validate configuration
+        // Start background timer
+    }
+}
+```
+
+At `@PostConstruct` execution, `repo` is already injected.
+
+
+---
+
+
