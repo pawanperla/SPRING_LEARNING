@@ -3,7 +3,7 @@ package org.Employee_DAO.Controllers;
 import java.util.*;
 
 import org.Employee_DAO.Entity.Employee;
-import org.Employee_DAO.Service.EmployeeService;
+import org.Employee_DAO.Service.EmployeeServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,19 +23,19 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class EmployeeRESTController {
 
     @Autowired
-    private EmployeeService employeeService;
+    private EmployeeServiceImp employeeServiceImp;
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @GetMapping("/employees")
     public List<Employee> getAll() {
-        return employeeService.findAll();
+        return employeeServiceImp.findAll();
     }
 
     @GetMapping("/employees/{employeeId}")
     public Employee getEmployee(@PathVariable int employeeId) {
-        Employee employee = employeeService.findById(employeeId);
+        Employee employee = employeeServiceImp.findById(employeeId);
         if (employee == null) {
             throw new RuntimeException("Employee ID Not Found! :" + employeeId);
         }
@@ -45,23 +45,23 @@ public class EmployeeRESTController {
     @PostMapping("/employees")
     public Employee addEmployee(@RequestBody Employee employeeToAdd) {
         employeeToAdd.setId(0);
-        return employeeService.save(employeeToAdd);
+        return employeeServiceImp.save(employeeToAdd);
     }
 
     @PutMapping("/employees")
     public Employee updateEmployee(@RequestBody Employee employeeToUpdate) {
-        return employeeService.save(employeeToUpdate);
+        return employeeServiceImp.save(employeeToUpdate);
     }
 
     @DeleteMapping("/employees/{employeeId}")
     public String deleteEmployee(@PathVariable int employeeId) {
-        employeeService.deleteById(employeeId);
+        employeeServiceImp.deleteById(employeeId);
         return "Deleted Id : " + employeeId;
     }
 
     @PatchMapping("/employees/{employeeId}")
     public Employee updateEmployee(@PathVariable int employeeId, @RequestBody Map<String, Object> patchPayload) {
-        Employee employee = employeeService.findById(employeeId);
+        Employee employee = employeeServiceImp.findById(employeeId);
         if (employee == null) {
             throw new RuntimeException("Employee ID Not Found! :" + employeeId);
         }
@@ -72,7 +72,7 @@ public class EmployeeRESTController {
 
         Employee patchedEmployee = apply(patchPayload, employee);
 
-        return employeeService.save(patchedEmployee);
+        return employeeServiceImp.save(patchedEmployee);
     }
 
     private Employee apply(Map<String, Object> patchPayload, Employee employee) {

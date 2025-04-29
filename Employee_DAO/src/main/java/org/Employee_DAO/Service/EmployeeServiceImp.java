@@ -2,38 +2,31 @@ package org.Employee_DAO.Service;
 
 import java.util.*;
 
-import org.Employee_DAO.DAO.EmployeeDAO;
+import org.Employee_DAO.DAO.EmployeeRepository;
 import org.Employee_DAO.Entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.transaction.Transactional;
-
 @Service
-public class EmployeeServiceImp implements EmployeeService {
+public class EmployeeServiceImp {
+
     @Autowired
-    private EmployeeDAO employeeDAO;
+    private EmployeeRepository employeeRepository;
 
-    @Override
     public List<Employee> findAll() {
-        return employeeDAO.findAll();
+        return employeeRepository.findAll();
     }
 
-    @Override
     public Employee findById(int id) {
-        return employeeDAO.findById(id);
+        return employeeRepository.findById(id).get();
     }
 
-    @Transactional
-    @Override
     public Employee save(Employee employee) {
-        return employeeDAO.save(employee);
+        return employeeRepository.save(employee);
     }
 
-    @Transactional
-    @Override
     public void deleteById(int id) {
-        employeeDAO.deleteById(id);
+        employeeRepository.deleteById(id);
     }
 
 }
