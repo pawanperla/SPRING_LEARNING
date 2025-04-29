@@ -570,7 +570,136 @@ public class ExampleService {
 
 At `@PostConstruct` execution, `repo` is already injected.
 
+---
+
+# @ControllerAdvice in Spring Boot
+
+## What is `@ControllerAdvice`?
+
+`@ControllerAdvice` is a specialized annotation in Spring used to handle **cross-cutting concerns** across all controllers globally. It is especially useful for:
+
+- Global **Exception Handling**
+- Global **Model Attributes**
+- Global **Data Binding**
 
 ---
+
+## Key Use-Cases
+
+| Use Case              | Description                                                             |
+|-----------------------|-------------------------------------------------------------------------|
+| Exception Handling    | Handle exceptions thrown by any controller in a centralized location.   |
+| Model Population      | Add attributes to the model shared across multiple controllers.         |
+| Data Binding          | Customize data binding for all controllers (e.g., date formats).        |
+
+---
+
+## Example: Global Exception Handler
+
+```java
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> handleResourceNotFound(ResourceNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleGenericException(Exception ex) {
+        return new ResponseEntity<>("Internal Server Error: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+---
+
+## Advanced: Custom Error Response Object
+
+### Error Response Class
+
+```java
+public class ErrorResponse {
+    private String message;
+    private LocalDateTime timestamp;
+    private int status;
+
+    // constructors, getters, setters
+}
+```
+
+### Global Exception Handler with Custom Response
+
+```java
+@ControllerAdvice
+public class CustomGlobalExceptionHandler {
+
+    @ExceptionHandler(MyCustomException.class)
+    public ResponseEntity<ErrorResponse> handleCustomException(MyCustomException ex) {
+        ErrorResponse error = new ErrorResponse(
+            ex.getMessage(),
+            LocalDateTime.now(),
+            HttpStatus.BAD_REQUEST.value()
+        );
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+}
+```
+
+---
+
+## Other Features
+
+### `@ModelAttribute`
+
+Add global attributes to the model for all controllers:
+
+```java
+@ControllerAdvice
+public class GlobalModelAttributeAdvice {
+
+    @ModelAttribute
+    public void addGlobalAttributes(Model model) {
+        model.addAttribute("projectName", "Spring Learning");
+    }
+}
+```
+
+### `@InitBinder`
+
+Customize the data binding globally:
+
+```java
+@ControllerAdvice
+public class GlobalBinderAdvice {
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(LocalDate.class, new CustomDateEditor(...));
+    }
+}
+```
+
+---
+
+## Notes
+
+- Applies to both `@Controller` and `@RestController`
+- Can return `ModelAndView`, `ResponseEntity`, or any object
+- You can use `@RestControllerAdvice` for auto `@ResponseBody`
+- Use `@Order` to prioritize multiple `@ControllerAdvice`
+
+---
+
+## Best Practices
+
+- Centralize all exception handling for cleaner controller code
+- Use structured error responses for better client debugging
+- Avoid overly broad exception handling (e.g., generic `Exception.class`)
+- Group related exceptions into specific `@ControllerAdvice` classes if needed
+
+---
+
+
 
 
